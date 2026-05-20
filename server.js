@@ -3,12 +3,15 @@ import mongoose from 'mongoose';
 import config from './config.js';
 import { configureRouter } from './api/router.js';
 import './dependencies.js';
+import errorMiddleware from './middlewares/errors_middleware.js';
 
 const app = express();
 
 app.use(express.json());
 
 configureRouter(app);
+
+app.use(errorMiddleware);
 
 try {
   await mongoose.connect(config.dbConnection);
