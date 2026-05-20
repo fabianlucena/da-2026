@@ -11,4 +11,16 @@ export class UserMockup {
   getList() {
     return this.users;
   }
+
+  add(user) {
+    user.id = this.users
+      .map(u => u.id)
+      .reduce((a, b) => Math.max(a, b), 0) + 1;
+    this.users.push(user);
+    return user;
+  }
+
+  getByName(name) {
+    return this.users.find(u => u.name === name);
+  }
 }
