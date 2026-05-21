@@ -4,10 +4,12 @@ import config from './config.js';
 import { configureRouter } from './api/router.js';
 import './dependencies.js';
 import errorMiddleware from './middlewares/errors_middleware.js';
+import checkAuthorizationTokenMiddleware from './middlewares/check_authorization_token_middleware.js';
 
 const app = express();
 
 app.use(express.json());
+app.use(checkAuthorizationTokenMiddleware);
 
 configureRouter(app);
 
