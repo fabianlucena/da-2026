@@ -1,4 +1,5 @@
 import { getDependency } from '../dependency.js';
+import bcrypt from 'bcrypt';
 
 export class LoginService {
   constructor() {
@@ -26,10 +27,11 @@ export class LoginService {
     if (!user)
       throw new Error('Usuario o contraseña incorrectos');
 
-    if (user.password !== data.password)
+
+    const isMatch = await bcrypt.compare(data.password, user.password);
+    if (!isMatch)
       throw new Error('Usuario o contraseña incorrectos');
 
-    
     var authorizationToken;
     do {
       authorizationToken = this.createToken();

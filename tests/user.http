@@ -20,8 +20,8 @@ Authorization: Bearer {{authorizationToken}}
 Content-Type: application/json
 
 {
-  "username": "Juan",
-  "password": "12345",
+  "username": "ale2",
+  "password": "123456",
   "displayName": "Juan Pérez",
   "email": "juan.perez@example.com"
 }
