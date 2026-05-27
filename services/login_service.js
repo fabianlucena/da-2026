@@ -27,7 +27,6 @@ export class LoginService {
     if (!user)
       throw new Error('Usuario o contraseña incorrectos');
 
-
     const isMatch = await bcrypt.compare(data.password, user.password);
     if (!isMatch)
       throw new Error('Usuario o contraseña incorrectos');

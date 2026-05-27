@@ -1,10 +1,10 @@
 import { getDependency } from '../dependency.js';
+import checkRoleMiddleware from '../middlewares/check_role_middleware.js';
 
 export function configureUserRouter(router) {
   const userService = getDependency('userService');
 
-  console.log('Configurando rutas de usuario');
-  router.get('/users', async (req, res) => {
+  router.get('/users', checkRoleMiddleware(['admin']),  async (req, res) => {
     const users = await userService.getList();
     res.json(users.map(user => ({
       username: user.username,

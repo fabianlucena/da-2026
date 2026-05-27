@@ -18,6 +18,8 @@ export default async function checkAuthorizationTokenMiddleware(req, res, next) 
       throw new Error('Invalid authorization token');
 
     req.session = session;
+
+    console.log(session);
   }
 
   next();
