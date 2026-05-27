@@ -5,15 +5,16 @@ import { configureRouter } from './api/router.js';
 import './dependencies.js';
 import errorMiddleware from './middlewares/errors_middleware.js';
 import checkAuthorizationTokenMiddleware from './middlewares/check_authorization_token_middleware.js';
-import bcrypt from 'bcrypt';
+import logMiddleware from './middlewares/log_middleware.js';
+//import bcrypt from 'bcrypt';
 
-// 
-console.log('Hash de 1234:', await bcrypt.hash('1234', 10));
+// console.log('Hash de 1234:', await bcrypt.hash('1234', 10));
 
 const app = express();
 
 app.use(express.json());
 app.use(checkAuthorizationTokenMiddleware);
+app.use(logMiddleware);
 
 configureRouter(app);
 
