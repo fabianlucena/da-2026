@@ -16,7 +16,9 @@ app.use(express.json());
 app.use(checkAuthorizationTokenMiddleware);
 app.use(logMiddleware);
 
-configureRouter(app);
+const apiRouter = express.Router();
+app.use('/api', apiRouter);
+configureRouter(apiRouter);
 
 app.use(errorMiddleware);
 
