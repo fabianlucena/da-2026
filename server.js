@@ -10,19 +10,19 @@ import logMiddleware from './middlewares/log_middleware.js';
 
 // console.log('Hash de 1234:', await bcrypt.hash('1234', 10));
 
-const app = express();
-
-app.use(express.json());
-app.use(checkAuthorizationTokenMiddleware);
-app.use(logMiddleware);
-
-const apiRouter = express.Router();
-app.use('/api', apiRouter);
-configureRouter(apiRouter);
-
-app.use(errorMiddleware);
-
 try {
+  const app = express();
+
+  app.use(express.json());
+  app.use(checkAuthorizationTokenMiddleware);
+  app.use(logMiddleware);
+
+  const apiRouter = express.Router();
+  app.use('/api', apiRouter);
+  configureRouter(apiRouter);
+
+  app.use(errorMiddleware);
+
   await mongoose.connect(config.dbConnection);
   console.log('Conectado a MongoDB');
 
@@ -30,5 +30,5 @@ try {
     console.log(`Server escuchando en http://localhost:${config.port}`);
   });
 } catch (error) {
-  console.error('Error connecting to MongoDB:', error);
+  console.error('Error initianing the server:', error);
 }
