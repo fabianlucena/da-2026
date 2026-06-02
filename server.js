@@ -3,12 +3,12 @@ import mongoose from 'mongoose';
 import config from './config.js';
 import { configureRouter } from './api/router.js';
 import './dependencies.js';
-import errorMiddleware from './middlewares/errors_middleware.js';
+import errorMiddleware from './middlewares/error_middleware.js';
 import checkAuthorizationTokenMiddleware from './middlewares/check_authorization_token_middleware.js';
 import logMiddleware from './middlewares/log_middleware.js';
-//import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt';
 
-// console.log('Hash de 1234:', await bcrypt.hash('1234', 10));
+console.log('Hash de 1234:', await bcrypt.hash('1234', 10));
 
 try {
   const app = express();
