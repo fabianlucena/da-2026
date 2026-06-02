@@ -8,7 +8,7 @@ Content-Type: application/json
 
 ###
 
-@authorizationToken = fec42666f8dcd0f2ca89219d0574ce6935b30dff912911aa78bc26603f917270
+@authorizationToken = 5f5bc092f6aca0e30fa08273690dd5ced7ae4135c30289d1fff41ff69411921b
 
 GET http://localhost:3000/api/users
 Authorization: Bearer {{authorizationToken}}
