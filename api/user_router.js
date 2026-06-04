@@ -14,7 +14,7 @@ export function configureUserRouter(router) {
     })));
   });
 
-  router.post('/users', async (req, res) => {
+  router.post('/users', checkRoleMiddleware(['admin']),  async (req, res) => {
     const user = req.body;
     const newUser = await userService.add(user);
     res.json(newUser);
